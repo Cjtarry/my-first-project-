@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Analyzer</title>
+    <style>
+        :root {
+            --bg-1: #0f172a;
+            --bg-2: #1e293b;
+            --card: #0b1220;
+            --accent: #38bdf8;
+            --accent-2: #22c55e;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --field: #0f1b2f;
+            --shadow: 0 25px 60px rgba(2, 6, 23, 0.55);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: 40px 16px;
+            font-family: "Sora", "Trebuchet MS", "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(900px 500px at 15% 10%, rgba(56, 189, 248, 0.2), transparent),
+                radial-gradient(700px 400px at 85% 20%, rgba(34, 197, 94, 0.18), transparent),
+                linear-gradient(135deg, var(--bg-1), var(--bg-2));
+        }
+
+        .card {
+            width: min(520px, 100%);
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.95));
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(56, 189, 248, 0.08), transparent 45%);
+            pointer-events: none;
+        }
+
+        h2 {
+            margin: 0 0 12px;
+            font-size: 28px;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            margin: 0 0 28px;
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        form {
+            display: grid;
+            gap: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            background: var(--field);
+            color: var(--text);
+            font-size: 15px;
+            outline: none;
+            transition: border 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input:focus {
+            border-color: rgba(56, 189, 248, 0.7);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+        }
+
+        .row {
+            display: grid;
+            gap: 8px;
+        }
+
+        .helper {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        button {
+            margin-top: 8px;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: none;
+            font-size: 15px;
+            font-weight: 600;
+            color: #0b1220;
+            background: linear-gradient(120deg, var(--accent), var(--accent-2));
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(34, 197, 94, 0.25);
+        }
+
+        @media (max-width: 520px) {
+            .card {
+                padding: 24px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Expense Analyzer</h2>
+        <p class="subtitle">Track your income and review your expense list instantly.</p>
+
+        <form method="post">
+            <div class="row">
+                <label for="salary">Monthly Salary</label>
+                <input id="salary" type="number" name="salary" placeholder="Enter salary" required>
+            </div>
+
+            <div class="row">
+                <label for="expenses">Expenses (comma separated)</label>
+                <input id="expenses" type="text" name="expenses" placeholder="Example: 50, 30, 100">
+                <span class="helper">Tip: Use commas between each item.</span>
+            </div>
+
+            <button type="submit">Calculate</button>
+        </form>
+    </div>
+</body>
+</html>
